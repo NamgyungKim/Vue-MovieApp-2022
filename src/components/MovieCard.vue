@@ -1,0 +1,69 @@
+<template>
+  <div class="movie-card">
+    <div
+      class="img-wrap"
+      @click="onModal">
+      <img
+        :src="movie.Poster"
+        alt="title" />
+    </div>
+    <h2>{{ movie.Title }}</h2>
+    <span>{{ movie.Year }}</span>
+  </div>
+</template>
+
+<script>
+export default {
+  props:{
+    movie:{
+      type: Object,
+      default: ()=> ({})
+    }
+  },
+  methods: {
+    async onModal(){
+      const { imdbID } = this.movie
+      await this.$store.dispatch('movie/movieDetail', { i: imdbID })
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.movie-card{
+  display: flex;
+  flex-direction: column;
+  width: calc( 1080px / 5 - 37px );
+  .img-wrap{
+    cursor: pointer;
+    overflow: hidden;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
+    &:hover{
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
+    }
+  }
+  img{
+    width: 100%;
+    border-radius: 5px;
+    transition: .5s;
+    &:hover{
+      transform: scale(1.05);
+    }
+  }
+  h2{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    word-wrap: break-word;
+  }
+  span{
+    font-size: 14px;
+  }
+  @include media(desktop) {
+    width: calc( 100vw/5 - 37px )
+  }
+  @include media(tablet) {
+    width: calc( 100vw/4 - 37px )
+  }
+}
+</style>

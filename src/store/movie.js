@@ -50,9 +50,9 @@ export default {
       })
     },
     async movieDetail({ state }, payload) {
-      const { id } = payload
+      const { i } = payload
       try {
-        const param = { i: id, plot: 'full' }
+        const param = { i, plot: 'full' }
         state.movie = await _request({ param })
       } catch(e) {
         console.error(e)
