@@ -1,5 +1,4 @@
 import axios from 'axios'
-import router from '~/routes'
 
 export default {
   namespaced: true,
@@ -10,7 +9,8 @@ export default {
       movie: {},
       page: 1,
       totalResults: 0,
-      loading: false
+      loading: false,
+      modalLoading: false
     }
   },
   getters: {},
@@ -25,19 +25,13 @@ export default {
     async searchMovie({ state, commit }, payload) {
       state.loading = true
       const { search } = payload
-      if (!search) {
+      if (search === state.searchWord) {
         if(state.page * 30 > state.totalResults)return
         state.page += 1
       } else {
         state.searchWord = search
         commit('resetState')
       }
-      router.push({
-        name: 'search',
-        params: {
-          word: state.searchWord
-        }
-      })
       try {
         for (let i = state.page * 3 - 2; i <= state.page * 3; i++){
           if(state.totalResults !== 0 && i * 10 > state.totalResults){

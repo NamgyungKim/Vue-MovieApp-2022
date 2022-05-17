@@ -4,15 +4,20 @@
     class="no-results">
     No results were found for your search
   </p>
-  <ul v-else>
-    <li
-      v-for="movie in movies"
-      :key="movie.imdbID">
-      <MovieCard
-        v-model="isShowModal"
-        :movie="movie" />
-    </li>
-  </ul>
+  <div v-else>
+    <ul>
+      <li
+        v-for="movie in movies"
+        :key="movie.imdbID">
+        <MovieCard
+          v-model="isShowModal"
+          :movie="movie" />
+      </li>
+    </ul>
+    <button @click="search">
+      ADD
+    </button>
+  </div>
   <Loading v-if="isLoading" />
   <Modal
     v-if="isShowModal"
@@ -22,6 +27,7 @@
 <script>
 import MovieCard from '~/components/MovieCard'
 import Modal from '~/components/Modal'
+
 export default {
   components:{
     MovieCard,
@@ -38,6 +44,13 @@ export default {
     },
     isLoading(){
       return this.$store.state.movie.loading
+    }
+  },
+  methods:{
+    async search(){
+      const { word } = this.$route.params
+      await this.$store.dispatch('movie/searchMovie', { search: word })
+      console.log(this.$store.state)
     }
   }
 }
@@ -56,5 +69,21 @@ ul{
   text-align: center;
   font-weight: bold;
   font-size: 40px;
+}
+button{
+  display: block;
+  background: #fff;
+  border: none;
+  height: 50px;
+  width: 200px;
+  border-radius: 5px;
+  margin: 50px auto;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all .4s;
+  &:hover{
+    background: rgba(#fff, $alpha: 0.8);
+  }
 }
 </style>

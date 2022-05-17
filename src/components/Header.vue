@@ -22,12 +22,20 @@
 </template>
 
 <script>
+import router from '~/routes'
+
 export default {
   methods:{
     async search(){
       const { value } = this.$refs.content
+      router.push({
+        name: 'search',
+        params: {
+          word: value
+        }
+      })
       if(value.length > 1){
-        await this.$store.dispatch('movie/searchMovie', { search: value})
+        await this.$store.dispatch('movie/searchMovie', { search: value })
         this.$refs.content.value = ''
       }
     }
