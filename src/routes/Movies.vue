@@ -3,16 +3,28 @@
     <li
       v-for="movie in movies"
       :key="movie.imdbID">
-      <MovieCard :movie="movie" />
+      <MovieCard
+        v-model="isShowModal"
+        :movie="movie" />
     </li>
   </ul>
+  <Modal
+    v-if="isShowModal"
+    v-model="isShowModal" />
 </template>
 
 <script>
 import MovieCard from '~/components/MovieCard'
+import Modal from '~/components/Modal'
 export default {
   components:{
-    MovieCard
+    MovieCard,
+    Modal
+  },
+  data(){
+    return{
+      isShowModal: false
+    }
   },
   computed:{
     movies(){

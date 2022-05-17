@@ -2,7 +2,7 @@
   <div class="movie-card">
     <div
       class="img-wrap"
-      @click="onModal">
+      @click="openModal">
       <img
         :src="movie.Poster"
         alt="title" />
@@ -20,11 +20,13 @@ export default {
       default: ()=> ({})
     }
   },
+  emits:['update:modelValue'],
   methods: {
-    async onModal(){
+    async openModal(){
       const { imdbID } = this.movie
       await this.$store.dispatch('movie/movieDetail', { i: imdbID })
-    }
+      this.$emit('update:modelValue', true)
+    },
   }
 }
 </script>
