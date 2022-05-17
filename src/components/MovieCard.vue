@@ -4,8 +4,8 @@
       class="img-wrap"
       @click="openModal">
       <img
-        :src="movie.Poster"
-        alt="title" />
+        :src="movie.Poster === 'N/A'? 'image/NA.png' : movie.Poster"
+        :alt="movie.Title" />
     </div>
     <h2>{{ movie.Title }}</h2>
     <span>{{ movie.Year }}</span>
