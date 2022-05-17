@@ -1,15 +1,6 @@
 <template>
   <div class="wrap">
     <Header />
-    <RouterLink to="/">
-      Home
-    </RouterLink>
-    <RouterLink to="/search/심슨">
-      search
-    </RouterLink>
-    <RouterLink to="/123">
-      notFound
-    </RouterLink>
     <RouterView />
   </div>
 </template>
@@ -25,18 +16,6 @@ export default {
       msg: 'Hello Webpack!!',
       search: 'frozen'
     }
-  },
-  created(){
-    this.searchMovie()
-  },
-  methods:{
-    async searchMovie(){
-      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-     
-    }
   }
 }
 </script>
@@ -46,7 +25,7 @@ export default {
 .wrap{
   margin:  auto;
   max-width: 1080px;
-  @include media(desktop) {
+  /* @include media(desktop) {
     background: pink;
   }
   @include media(tablet) {
@@ -54,6 +33,6 @@ export default {
   }
   @include media(mobile) {
     background: pink;
-  }
+  } */
 }
 </style>

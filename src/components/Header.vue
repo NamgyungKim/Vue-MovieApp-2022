@@ -29,12 +29,9 @@ export default {
       if(value.length > 1){
         await this.$store.dispatch('movie/searchMovie', { search: value})
         this.$refs.content.value = ''
-        // console.log(this.$store.state.movie)
       }
-
     }
   }
-  
 }
 </script>
 

@@ -9,7 +9,8 @@ export default {
       movies: [],
       movie: {},
       page: 1,
-      totalResults: 0
+      totalResults: 0,
+      loading: false
     }
   },
   getters: {},
@@ -21,7 +22,8 @@ export default {
     }
   },
   actions: {
-    async searchMovie({ state,commit }, payload) {
+    async searchMovie({ state, commit }, payload) {
+      state.loading = true
       const { search } = payload
       if (!search) {
         if(state.page * 30 > state.totalResults)return
@@ -48,6 +50,7 @@ export default {
           word: state.searchWord
         }
       })
+      state.loading = false
     },
     async movieDetail({ state }, payload) {
       const { i } = payload

@@ -8,6 +8,7 @@
         :movie="movie" />
     </li>
   </ul>
+  <Loading v-if="isLoading" />
   <Modal
     v-if="isShowModal"
     v-model="isShowModal" />
@@ -29,6 +30,9 @@ export default {
   computed:{
     movies(){
       return this.$store.state.movie.movies
+    },
+    isLoading(){
+      return this.$store.state.movie.loading
     }
   }
 }
