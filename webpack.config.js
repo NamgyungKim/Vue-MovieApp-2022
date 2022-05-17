@@ -8,6 +8,7 @@ module.exports = {
     extensions: ['.vue', '.js'],
     alias: {
       '~': path.resolve(__dirname, 'src'),
+      'image': path.resolve(__dirname, 'static/image'),
     },
   },
   entry: './src/main.js',
@@ -29,7 +30,25 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader','sass-loader'],
+        use: [
+          'vue-style-loader', 
+          'css-loader', 
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `
+                @use "sass:color";
+                @use "sass:list";
+                @use "sass:map";
+                @use "sass:math";
+                @use "sass:meta";
+                @use "sass:selector";
+                @use "sass:string";
+                @import "~/scss/_variables";
+              `
+            }
+          }],
       },
     ],
   },

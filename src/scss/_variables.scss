@@ -1,0 +1,21 @@
+$test-color: #333;
+$main-color: #ffd000;
+$gray-color: #888;
+
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: $main-color;
+}
+
+
+@mixin media($device) {
+  $breakpoints: (
+    desktop: 1080px,
+    tablet: 768px,
+    mobile: 640px,
+  );
+
+  @media all and (max-width: map.get($breakpoints, $device)) {
+    @content;
+  }
+}
