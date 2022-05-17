@@ -32,24 +32,30 @@ export default {
         state.searchWord = search
         commit('resetState')
       }
-      try {
-        for (let i = state.page * 3 - 2; i <= state.page * 3; i++){
-          if(state.totalResults !== 0 && i * 10 > state.totalResults)return
-          const param = { s: state.searchWord, page: i }
-          const { Search, totalResults } = await _request({ param })
-          if(!Search)return // 검색결과가 없을 경우
-          state.movies.push(...Search)
-          state.totalResults = totalResults
-        }
-      } catch (e) {
-        console.error(e)
-      }
       router.push({
         name: 'search',
         params: {
           word: state.searchWord
         }
       })
+      try {
+        for (let i = state.page * 3 - 2; i <= state.page * 3; i++){
+          if(state.totalResults !== 0 && i * 10 > state.totalResults){
+            state.loading = false
+            return
+          }
+          const param = { s: state.searchWord, page: i }
+          const { Search, totalResults } = await _request({ param })
+          if (!Search) {
+            state.loading = false
+            return
+          } 
+          state.movies.push(...Search)
+          state.totalResults = totalResults
+        }
+      } catch (e) {
+        console.error(e)
+      }
       state.loading = false
     },
     async movieDetail({ state }, payload) {

@@ -1,5 +1,10 @@
 <template>
-  <ul>
+  <p
+    v-if="movies.length === 0 && !isLoading"
+    class="no-results">
+    No results were found for your search
+  </p>
+  <ul v-else>
     <li
       v-for="movie in movies"
       :key="movie.imdbID">
@@ -45,5 +50,11 @@ ul{
   flex-wrap: wrap;
   gap: 25px;
   box-sizing: border-box;
+}
+.no-results{
+  margin: 100px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
 }
 </style>
