@@ -1,22 +1,24 @@
 <template>
-  <SearchBar />
-  <RouterLink to="/">
-    Home
-  </RouterLink>
-  <RouterLink to="/search/심슨">
-    search
-  </RouterLink>
-  <RouterLink to="/123">
-    notFound
-  </RouterLink>
-  <RouterView />
+  <div class="wrap">
+    <Header />
+    <RouterLink to="/">
+      Home
+    </RouterLink>
+    <RouterLink to="/search/심슨">
+      search
+    </RouterLink>
+    <RouterLink to="/123">
+      notFound
+    </RouterLink>
+    <RouterView />
+  </div>
 </template>
 
 <script>
-import SearchBar from '~/components/SearchBar'
+import Header from '~/components/Header'
 export default {
   components:{
-    SearchBar
+    Header
   },
   data() {
     return {
@@ -29,11 +31,11 @@ export default {
   },
   methods:{
     async searchMovie(){
-      await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
-      console.log(this.$store.state.movie)
+      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
+      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
+      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
+      // await this.$store.dispatch('movie/searchMovie', { search: 'omg'})
+     
     }
   }
 }
@@ -41,7 +43,9 @@ export default {
 
 <style lang="scss">
 
-body{
+.wrap{
+  margin:  auto;
+  max-width: 1080px;
   @include media(desktop) {
     background: pink;
   }

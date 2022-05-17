@@ -13,6 +13,7 @@ export default createRouter({
       component: Home,
     },
     {
+      name: 'search',
       path: '/search/:word',
       component: Movies
     },

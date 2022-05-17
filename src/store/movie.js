@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '~/routes'
 
 export default {
   namespaced: true,
@@ -22,7 +23,7 @@ export default {
   actions: {
     async searchMovie({ state,commit }, payload) {
       const { search } = payload
-      if (search === state.searchWord) {
+      if (!search) {
         if(state.page * 30 > state.totalResults)return
         state.page += 1
       } else {
@@ -32,14 +33,21 @@ export default {
       try {
         for (let i = state.page * 3 - 2; i <= state.page * 3; i++){
           if(state.totalResults !== 0 && i * 10 > state.totalResults)return
-          const param = { s: search, page: i }
+          const param = { s: state.searchWord, page: i }
           const { Search, totalResults } = await _request({ param })
+          if(!Search)return // 검색결과가 없을 경우
           state.movies.push(...Search)
           state.totalResults = totalResults
         }
       } catch (e) {
         console.error(e)
       }
+      router.push({
+        name: 'search',
+        params: {
+          word: state.searchWord
+        }
+      })
     },
     async movieDetail({ state }, payload) {
       const { id } = payload
