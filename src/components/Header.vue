@@ -25,19 +25,29 @@
 import router from '~/routes'
 
 export default {
+  watch:{
+    $route(){
+      this.request()
+    }
+  },
   methods:{
     async search(){
       const { value } = this.$refs.content
-      router.push({
+      if(value.length < 2) return
+      await router.push({
         name: 'search',
         params: {
           word: value
         }
       })
-      if(value.length > 1){
-        await this.$store.dispatch('movie/searchMovie', { search: value })
-        this.$refs.content.value = ''
-      }
+      this.$refs.content.value = ''
+      this.request()
+    },
+    async request(){
+      const { word } = await this.$route.params
+      console.log(this.$route)
+      if(!word)return
+      await this.$store.dispatch('movie/searchMovie', { search: word })
     }
   }
 }
