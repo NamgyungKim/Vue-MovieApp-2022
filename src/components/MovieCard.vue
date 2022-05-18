@@ -4,7 +4,11 @@
       class="img-wrap"
       @click="openModal">
       <img
-        :src="movie.Poster === 'N/A'? 'image/NA.png' : movie.Poster"
+        v-if="!movie.Poster || movie.Poster === 'N/A'"
+        src="image/NA.png"
+        alt="N/A" />
+      <img
+        :src="movie.Poster"
         :alt="movie.Title" />
     </div>
     <h2>{{ movie.Title }}</h2>
@@ -39,6 +43,8 @@ export default {
   .img-wrap{
     cursor: pointer;
     overflow: hidden;
+    width: 100%;
+    height: 250px;
     filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
     &:hover{
       filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
