@@ -65,12 +65,6 @@ export default {
 }
 
 async function _request(params) {
-  const apikey = '7035c60c'
-  return await axios.get(`http://www.omdbapi.com?apikey=${apikey}`,
-     {params: params.param} )
-    .then(function (response) {
-      return response.data
-    }).catch((e) => {
-      console.log(e)
-    })
+  const data = await axios.post('/.netlify/functions/movie', JSON.stringify(params))
+  return data.data
 }

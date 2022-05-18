@@ -63,6 +63,6 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true, // 개발시에만.
-    port: 8080,
+    port: 8079,
   },
 }

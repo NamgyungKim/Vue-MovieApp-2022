@@ -45,7 +45,6 @@ export default {
     },
     async request(){
       const { word } = await this.$route.params
-      console.log(this.$route)
       if(!word)return
       await this.$store.dispatch('movie/searchMovie', { search: word })
     }
