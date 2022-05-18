@@ -16,7 +16,7 @@
       @keyup.enter="search" />
     <button
       class="search-btn"
-      style="background: url('image/search-btn.png')"
+      style="background: center/cover no-repeat url('image/search-btn.png')"
       @click="search"></button>
   </header>
 </template>
@@ -55,10 +55,13 @@ export default {
 <style scoped lang="scss">
 header{
   display: flex;
-  margin-top: 75px;
   margin: 50px 30px 0;
   box-sizing: border-box;
   height: 150px;
+  @include media(tablet) {
+    margin: 30px 20px 0;
+    height: 126px;
+  }
 }
 h1 {
   align-self: flex-end;
@@ -66,6 +69,12 @@ h1 {
     display: block;
     width: 190px;
     cursor: pointer;
+    @include media(tablet) {
+      width: 150px;
+    }
+    @include media(mobile) {
+    display: none;
+  }
   }
 }
 .search-input{
@@ -80,6 +89,17 @@ h1 {
   outline: none;
   background-repeat: no-repeat;
   background-position: 10px;
+  @include media(tablet) {
+    height: 40px;
+    font-size: 16px;
+    margin: 36px 10px 0 20px;
+    padding-left: 40px;
+  }
+  @include media(mobile) {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 14px;
+  }
 }
 .search-btn{
   align-self: flex-start;
@@ -87,11 +107,13 @@ h1 {
   height: 100px;
   border: none;
   margin: none;
-  background-size: cover;
   cursor: pointer;
   transition: all .5s;
   &:hover{
     transform: rotate(5deg);
+  }
+  @include media(tablet) {
+    height: 80px;
   }
 }
 </style>

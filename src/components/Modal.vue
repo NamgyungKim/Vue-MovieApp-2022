@@ -74,27 +74,35 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
+  border-radius: 25px;
+  overflow: hidden;
   cursor: default;
+  @include media(desktop) {
+    width: 90%;
+  }
   .image-wrap{
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
     width: 50%;
     background: #fff;
     img{
-      border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
       height: 100%;
       width: 100%;
+    }
+    @include media(mobile) {
+      display: none;
     }
   }
   .movie-description{
     width: 50%;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
     background: #fff;
     padding: 30px;
     box-sizing: border-box;
     overflow: auto;
+    @include media(tablet) {
+      padding: 20px;
+    }
+    @include media(mobile) {
+      width: auto;
+    }
     .plot{
       height: 250px;
       overflow: auto;
@@ -109,21 +117,36 @@ export default {
         background-color: #ddd;
         border-radius: 5px;
       }
+      @include media(tablet) {
+        height: 150px;
+      }
     }
     h2{
       font-size: 50px;
       font-weight: bold;
       margin-top: 40px;
       margin-bottom: 20px;
+      @include media(tablet) {
+        font-size: 40px;
+        margin-top: 20px;
+      }
     }
     h3{
       margin: 25px 0 10px;
       font-weight: bold;
       font-size: 20px;
+      @include media(tablet) {
+        font-size: 18px;
+        margin-top: 20px;
+      }
     }
     p{
       color: $test-color;
       line-height: 1.5;
+      @include media(tablet) {
+        font-size: 14px;
+        margin-top: 20px;
+      }
     }
   }
 }

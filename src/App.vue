@@ -25,14 +25,5 @@ export default {
 .wrap{
   margin:  auto;
   max-width: 1080px;
-  /* @include media(desktop) {
-    background: pink;
-  }
-  @include media(tablet) {
-    background: $main-color;
-  }
-  @include media(mobile) {
-    background: pink;
-  } */
 }
 </style>

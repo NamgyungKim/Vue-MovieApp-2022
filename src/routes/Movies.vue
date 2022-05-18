@@ -67,6 +67,11 @@ ul{
   flex-wrap: wrap;
   gap: 25px;
   box-sizing: border-box;
+  @include media(tablet) {
+    margin: 0 20px 30px;
+  }
+  @include media(mobile) {
+  }
 }
 .no-results{
   margin: 100px 0;
