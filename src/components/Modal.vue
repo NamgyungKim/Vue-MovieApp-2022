@@ -2,13 +2,21 @@
   <div
     class="modal-bg"
     @click="closeModal">
+    <Loading
+      v-if="!movie"
+      style="color:#fff" />
     <div
+      v-else
       class="modal"
       @click.stop>
       <div class="image-wrap">
         <img
+          v-if="!movie.Poster || movie.Poster === 'N/A'"
+          src="image/NA.png"
+          alt="N/A" />
+        <img
           :src="movie.Poster"
-          :alt="movie.Title" /> 
+          :alt="movie.Title" />
       </div>
       <div class="movie-description">
         <h2>{{ movie.Title }}</h2>
