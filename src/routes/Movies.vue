@@ -15,7 +15,7 @@
       </li>
     </ul>
     <button
-      v-if="!isLoading"
+      v-if="!isLoading && movies.length < totalResults"
       @click="search">
       more
     </button>
@@ -46,7 +46,10 @@ export default {
     },
     isLoading(){
       return this.$store.state.movie.loading
-    }
+    },
+    totalResults(){
+      return this.$store.state.movie.totalResults
+    },
   },
   methods:{
     async search(){
@@ -59,7 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 ul{
-  margin: 0 30px;
+  margin: 0 30px 50px;
   display: flex;
   flex-wrap: wrap;
   gap: 25px;

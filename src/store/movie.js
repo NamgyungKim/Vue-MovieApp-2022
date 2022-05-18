@@ -26,19 +26,25 @@ export default {
       state.loading = true
       const { search } = payload
       if (search === state.searchWord) {
-        if(state.page * 30 > state.totalResults)return
-        state.page += 1
+        if (state.page * 30 > state.totalResults) {
+          state.loading = false
+          return
+        }
+          state.page += 1
       } else {
         state.searchWord = search
         commit('resetState')
       }
       try {
-        for (let i = state.page * 3 - 2; i <= state.page * 3; i++){
-          if(state.totalResults !== 0 && i * 10 > state.totalResults){
+        const start = state.page * 3 - 2
+        const end = state.page * 3
+        for (let i = start; i <= end; i++){
+          let currentResults = state.movies.length
+          if (state.totalResults !== 0 && currentResults >= state.totalResults) {
             state.loading = false
             return
           }
-          const param = { s: state.searchWord, page: i }
+          const param = { s: search, page: i }
           const { Search, totalResults } = await _request({ param })
           if (!Search) {
             state.loading = false
@@ -49,9 +55,11 @@ export default {
         }
       } catch (e) {
         console.error(e)
+        state.loading = false
       }
       state.loading = false
     },
+
     async movieDetail({ state }, payload) {
       const { i } = payload
       try {
