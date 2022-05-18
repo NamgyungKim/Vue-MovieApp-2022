@@ -14,8 +14,10 @@
           :movie="movie" />
       </li>
     </ul>
-    <button @click="search">
-      ADD
+    <button
+      v-if="!isLoading"
+      @click="search">
+      more
     </button>
   </div>
   <Loading v-if="isLoading" />
@@ -50,7 +52,6 @@ export default {
     async search(){
       const { word } = this.$route.params
       await this.$store.dispatch('movie/searchMovie', { search: word })
-      console.log(this.$store.state)
     }
   }
 }
