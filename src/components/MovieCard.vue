@@ -8,6 +8,7 @@
         src="image/NA.png"
         alt="N/A" />
       <img
+        v-else
         :src="movie.Poster"
         :alt="movie.Title" />
     </div>
@@ -27,9 +28,9 @@ export default {
   emits:['update:modelValue'],
   methods: {
     async openModal(){
+      this.$emit('update:modelValue', true)
       const { imdbID } = this.movie
       await this.$store.dispatch('movie/movieDetail', { i: imdbID })
-      this.$emit('update:modelValue', true)
     },
   }
 }

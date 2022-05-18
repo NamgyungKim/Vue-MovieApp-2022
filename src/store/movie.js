@@ -26,10 +26,7 @@ export default {
       state.loading = true
       const { search } = payload
       if (search === state.searchWord) {
-        if (state.page * 30 > state.totalResults) {
-          state.loading = false
-          return
-        }
+        if (state.page * 30 > state.totalResults) return
           state.page += 1
       } else {
         state.searchWord = search
@@ -61,6 +58,7 @@ export default {
     },
 
     async movieDetail({ state }, payload) {
+      state.modalLoading = true
       const { i } = payload
       try {
         const param = { i, plot: 'full' }
@@ -68,6 +66,7 @@ export default {
       } catch(e) {
         console.error(e)
       }
+      state.modalLoading = false
     }
   },
 }

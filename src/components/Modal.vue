@@ -3,7 +3,7 @@
     class="modal-bg"
     @click="closeModal">
     <Loading
-      v-if="!movie"
+      v-if="modalLoading"
       style="color:#fff" />
     <div
       v-else
@@ -43,6 +43,9 @@ export default {
   computed:{
     movie(){
       return this.$store.state.movie.movie
+    },
+    modalLoading(){
+      return this.$store.state.movie.modalLoading
     }
   },
   methods:{
