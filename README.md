@@ -25,3 +25,5 @@ $ npm run dev
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white)  
 <https://www.figma.com/file/NKNkrymtXRwQBeIlpsNTON/Untitled?node-id=0%3A1>
 
+![image](https://user-images.githubusercontent.com/87519250/194467155-ac5aeb25-1a76-46e4-bb07-22abac3960c0.png)
+![image](https://user-images.githubusercontent.com/87519250/194467162-58b1aa18-07a9-4bc3-9f1a-558d7600843e.png)
