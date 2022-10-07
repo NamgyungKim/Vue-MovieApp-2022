@@ -19,10 +19,11 @@ $ npm run dev
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=Netlify&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white)  
 
 ## 👩‍💻구현  
 
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white)  
+
 <https://www.figma.com/file/NKNkrymtXRwQBeIlpsNTON/Untitled?node-id=0%3A1>
 
 ![image](https://user-images.githubusercontent.com/87519250/194467155-ac5aeb25-1a76-46e4-bb07-22abac3960c0.png)
